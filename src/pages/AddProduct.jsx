@@ -41,7 +41,6 @@ const AddProduct = () => {
       }
 
       alert("Producto envíado :)")
-
       setFormData({
         name: "",
         description: "",

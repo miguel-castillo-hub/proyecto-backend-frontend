@@ -27,6 +27,7 @@ const Register = () => {
         },
         body: JSON.stringify(formData)
       })
+
       const responseData = await response.json()
 
       if (!responseData.success) {

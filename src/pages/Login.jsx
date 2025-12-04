@@ -37,7 +37,6 @@ const Login = () => {
 
       // login exitoso
       login(responseData.token)
-      console.log(responseData)
       navigate("/")
     } catch (error) {
       console.log(error)
