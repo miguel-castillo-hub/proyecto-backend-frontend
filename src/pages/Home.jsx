@@ -94,7 +94,7 @@ const Home = () => {
   const handleChange = (e) => {
     setFilters({
       ...filters,
-      [e.target.nombre]: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -129,16 +129,31 @@ const Home = () => {
 
       <section>
         <form className="filters-form" onSubmit={handleSubmit}>
-          <input type="text" nombre="nombre" placeholder="Buscar por nombre" onChange={handleChange} value={filters.nombre} />
-          <input type="number" nombre="stock" placeholder="Ingrese el stock" onChange={handleChange} value={filters.stock} />
-          <select nombre="categoria" onChange={handleChange} value={filters.categoria}>
-            <option selected>Todas las categorías</option>
-            {
-              CATEGORIES.map((categoria) => <option key={categoria.id} value={categoria.value} >{categoria.content}</option>)
-            }
-          </select>
-          <input type="number" nombre="precioMin" placeholder="Precio mínimo" onChange={handleChange} value={filters.precioMin} />
-          <input type="number" nombre="precioMax" placeholder="Precio máximo" onChange={handleChange} value={filters.precioMax} />
+          <label>
+            Nombre
+            <input type="text" name="nombre" placeholder="Buscar por nombre" onChange={handleChange} value={filters.nombre} />
+          </label>
+          <label>
+            Stock
+            <input type="number" name="stock" placeholder="Ingrese el stock" onChange={handleChange} value={filters.stock} />
+          </label>
+          <label>
+            Categoría
+            <select name="categoria" onChange={handleChange} value={filters.categoria}>
+              <option selected>Todas las categorías</option>
+              {
+                CATEGORIES.map((categoria) => <option key={categoria.id} value={categoria.value} >{categoria.content}</option>)
+              }
+            </select>
+          </label>
+          <label>
+            Precio mínimo
+            <input type="number" name="precioMin" placeholder="Precio mínimo" onChange={handleChange} value={filters.precioMin} />
+          </label>
+          <label>
+            Precio máximo
+            <input type="number" name="precioMax" placeholder="Precio máximo" onChange={handleChange} value={filters.precioMax} />
+          </label>
           <button type="submit">Aplicar Filtros</button>
           <button type="button" onClick={handleResetFilter}>Cancelar</button>
         </form>
@@ -156,8 +171,8 @@ const Home = () => {
         {products.map((p, i) => (
           <div key={i} className="product-card">
             <h3>{p.nombre}</h3>
-            <p>{p.description}</p>
-            <p><strong>Precio:</strong> ${p.price}</p>
+            <p>{p.descripcion}</p>
+            <p><strong>Precio:</strong> ${p.precio}</p>
             <p><strong>Stock:</strong> {p.stock}</p>
             <p><strong>Categoría:</strong> {p.categoria}</p>
             {

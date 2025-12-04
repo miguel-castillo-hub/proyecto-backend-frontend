@@ -3,11 +3,11 @@ import { useState } from "react"
 const UpdateProduct = ({ product, onClose, onUpdate }) => {
   const [loader, setLoader] = useState(false)
   const [formData, setFormData] = useState({
-    name: product.name,
-    description: product.description,
-    price: product.price,
+    nombre: product.nombre,
+    descripcion: product.descripcion,
+    precio: product.precio,
     stock: product.stock,
-    category: product.category,
+    categoria: product.categoria,
   })
 
   const handleChange = (e) => {
@@ -22,7 +22,7 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
     e.preventDefault()
     const dataToUpdate = {
       ...formData,
-      price: Number(formData.price),
+      precio: Number(formData.precio),
       stock: Number(formData.stock)
     }
 
@@ -52,21 +52,21 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
         <h2>Editar producto</h2>
         <form className="form-container" onSubmit={handleSubmit}>
           <input
-            name="name"
+            name="nombre"
             type="text"
-            value={formData.name}
+            value={formData.nombre}
             onChange={handleChange}
           />
           <input
-            name="description"
+            name="descripcion"
             type="text"
-            value={formData.description}
+            value={formData.descripcion}
             onChange={handleChange}
           />
           <input
-            name="price"
+            name="precio"
             type="number"
-            value={formData.price}
+            value={formData.precio}
             onChange={handleChange}
           />
           <input
@@ -76,9 +76,9 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
             onChange={handleChange}
           />
           <input
-            name="category"
+            name="categoria"
             type="text"
-            value={formData.category}
+            value={formData.categoria}
             onChange={handleChange}
           />
           <button type="submit">{loader ? "Enviando..." : "Enviar"}</button>

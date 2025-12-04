@@ -24,9 +24,10 @@ const AddProduct = () => {
       price: Number(formData.price),
       stock: Number(formData.stock),
     }
+    console.log(token)
 
     try {
-      const response = await fetch(`https://backend-utn.onrender.com/products`, {
+      const response = await fetch(`http://localhost:3861/v3/productos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +64,7 @@ const AddProduct = () => {
       <div className="page-banner">Agregar Nuevo Producto</div>
 
       <section className="page-section">
-        <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
+        <form className="form-container" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Nombre"
@@ -71,14 +72,14 @@ const AddProduct = () => {
             minLength={3}
             maxLength={20}
             onChange={(e) => handleChange(e)}
-            value={formData.name}
+            value={formData.nombre}
           />
           <input
             type="text"
             placeholder="Descripción"
             name="descripcion"
             onChange={(e) => handleChange(e)}
-            value={formData.description}
+            value={formData.descripcion}
           />
           <input
             type="number"
@@ -86,7 +87,7 @@ const AddProduct = () => {
             name="precio"
             min={0}
             onChange={(e) => handleChange(e)}
-            value={formData.price}
+            value={formData.precio}
           />
           <input
             type="number"
@@ -103,7 +104,7 @@ const AddProduct = () => {
             minLength={3}
             maxLength={20}
             onChange={(e) => handleChange(e)}
-            value={formData.category} />
+            value={formData.categoria} />
           <button
             type="submit">Agregar
           </button>
