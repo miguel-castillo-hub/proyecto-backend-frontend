@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useAuth } from "../context/AuthContext"
 
 const UpdateProduct = ({ product, onClose, onUpdate }) => {
   const [loader, setLoader] = useState(false)
@@ -9,6 +10,7 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
     stock: product.stock,
     categoria: product.categoria,
   })
+  const { token } = useAuth()
 
   const handleChange = (e) => {
     console.log(e.target)
@@ -40,6 +42,7 @@ const UpdateProduct = ({ product, onClose, onUpdate }) => {
       onUpdate()
       onClose()
     } catch (error) {
+      console.log(error)
       console.log("Error al actualizar el objeto :(")
     } finally {
       setLoader(false)

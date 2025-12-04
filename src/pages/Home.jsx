@@ -58,8 +58,12 @@ const Home = () => {
 
   const deleteProduct = async (idProduct) => {
     setRespondServer({
-      ...error,
-      delete: null
+      success: null,
+      notification: null,
+      error: {
+        fetch: null,
+        delete: null
+      }
     })
     if (!confirm("¿Estás seguro de que quieres borrar el producto?")) {
       return
@@ -82,8 +86,15 @@ const Home = () => {
       setProducts(products.filter((p) => p._id !== idProduct))
 
       alert(`${dataResponse.data.nombre} borrado con éxito.`)
-    } catch (error) {
-      setRespondServer({ ...error, delete: "No se pudo borrar :(" })
+    } catch (e) {
+      setRespondServer({
+        success: false,
+        notification: e.message,
+        error: {
+          ...respondServer.error,
+          fetch: false
+        }
+      })
     }
   }
 
@@ -184,7 +195,7 @@ const Home = () => {
           </div>
         ))}
       </section>
-      {!respondServer.error.fetch && <p>{respondServer.notification}</p>}
+      {/* {!respondServer.error.fetch && <p>{respondServer.notification}</p>} */}
     </Layout>
   )
 }
