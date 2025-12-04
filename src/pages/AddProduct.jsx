@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom"
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: "",
+    nombre: "",
+    descripcion: "",
+    precio: "",
     stock: "",
-    category: ""
+    categoria: ""
   })
 
   const navigate = useNavigate()
@@ -42,11 +42,11 @@ const AddProduct = () => {
 
       alert("Producto envíado :)")
       setFormData({
-        name: "",
-        description: "",
-        price: "",
+        nombre: "",
+        descripcion: "",
+        precio: "",
         stock: "",
-        category: ""
+        categoria: ""
       })
     } catch (error) {
 
@@ -67,7 +67,7 @@ const AddProduct = () => {
           <input
             type="text"
             placeholder="Nombre"
-            name="name"
+            name="nombre"
             minLength={3}
             maxLength={20}
             onChange={(e) => handleChange(e)}
@@ -76,14 +76,14 @@ const AddProduct = () => {
           <input
             type="text"
             placeholder="Descripción"
-            name="description"
+            name="descripcion"
             onChange={(e) => handleChange(e)}
             value={formData.description}
           />
           <input
             type="number"
             placeholder="Precio"
-            name="price"
+            name="precio"
             min={0}
             onChange={(e) => handleChange(e)}
             value={formData.price}
@@ -99,7 +99,7 @@ const AddProduct = () => {
           <input
             type="text"
             placeholder="Categoría"
-            name="category"
+            name="categoria"
             minLength={3}
             maxLength={20}
             onChange={(e) => handleChange(e)}
